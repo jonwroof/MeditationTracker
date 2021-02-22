@@ -14,7 +14,7 @@ import { Tab4PageRoutingModule } from './tab4-routing.module';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: Tab4Page }]),
+    //RouterModule.forChild([{ path: '', component: Tab4Page }]),
     Tab4PageRoutingModule,
   ],
   declarations: [Tab4Page]
