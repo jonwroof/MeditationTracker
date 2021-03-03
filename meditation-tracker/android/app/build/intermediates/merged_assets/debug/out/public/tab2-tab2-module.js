@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#Timer {\n  font-size: 99pt;\n  text-align: center;\n  margin-top: 100px;\n}\n\n#TimeText {\n  font-size: 33pt;\n  text-align: center;\n  margin-top: 100px;\n}\n\n#TimerButton {\n  background-color: #639cb1;\n  border-radius: 2pt;\n  border-style: solid;\n  border-color: #ddc380;\n  font-size: 33pt;\n  text-align: center;\n  margin-top: 100px;\n  margin-left: auto;\n  margin-right: auto;\n  max-width: 250px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXHRhYjIucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUksZUFBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7QUFBSjs7QUFFQTtFQUVJLGVBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0FBQUo7O0FBRUE7RUFFSSx5QkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxxQkFBQTtFQUNBLGVBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0FBQUoiLCJmaWxlIjoidGFiMi5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjVGltZXJcclxue1xyXG4gICAgZm9udC1zaXplOiA5OXB0O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgbWFyZ2luLXRvcDogMTAwcHg7XHJcbn1cclxuI1RpbWVUZXh0XHJcbntcclxuICAgIGZvbnQtc2l6ZTogMzNwdDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIG1hcmdpbi10b3A6IDEwMHB4O1xyXG59XHJcbiNUaW1lckJ1dHRvblxyXG57XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoOTksIDE1NiwgMTc3KTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDJwdDtcclxuICAgIGJvcmRlci1zdHlsZTogc29saWQ7XHJcbiAgICBib3JkZXItY29sb3I6IHJnYigyMjEsIDE5NSwgMTI4KTtcclxuICAgIGZvbnQtc2l6ZTogMzNwdDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIG1hcmdpbi10b3A6IDEwMHB4O1xyXG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XHJcbiAgICBtYXJnaW4tcmlnaHQ6IGF1dG87XHJcbiAgICBtYXgtd2lkdGg6IDI1MHB4O1xyXG59XHJcbm1haW57XHJcbiAgICBcclxufSJdfQ== */");
+/* harmony default export */ __webpack_exports__["default"] = ("#progress-circle {\n  transform: rotate(-90deg);\n}\n\n.timer-text {\n  transform: rotate(90deg);\n  transform-origin: center;\n  font-size: 36px;\n  text-anchor: middle;\n  font-weight: 600;\n  fill: #7f8c8d;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXHRhYjIucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kseUJBQUE7QUFDSjs7QUFFQTtFQUNJLHdCQUFBO0VBQ0Esd0JBQUE7RUFDQSxlQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLGFBQUE7QUFDSiIsImZpbGUiOiJ0YWIyLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNwcm9ncmVzcy1jaXJjbGV7XHJcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSgtOTBkZWcpO1xyXG59XHJcblxyXG4udGltZXItdGV4dCB7XHJcbiAgICB0cmFuc2Zvcm06IHJvdGF0ZSg5MGRlZyk7XHJcbiAgICB0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7XHJcbiAgICBmb250LXNpemU6IDM2cHg7XHJcbiAgICB0ZXh0LWFuY2hvcjogbWlkZGxlO1xyXG4gICAgZm9udC13ZWlnaHQ6IDYwMDtcclxuICAgIGZpbGw6ICAjN2Y4YzhkIDtcclxufSJdfQ== */");
 
 /***/ }),
 
@@ -27,12 +27,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _raw_loader_tab2_page_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./tab2.page.html */ "e9nj");
 /* harmony import */ var _tab2_page_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tab2.page.scss */ "EGAO");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "qCKp");
 
 
 
 
+
+const circleR = 80;
+const circleDasharray = 2 * Math.PI * circleR;
 let Tab2Page = class Tab2Page {
-    constructor() { }
+    constructor() {
+        this.time = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"]('00:00');
+        this.percent = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](100);
+        this.startDuration = 1;
+        this.circleR = circleR;
+        this.circleDasharray = circleDasharray;
+        this.state = 'stop';
+    }
+    click() {
+        alert('Meditation Session Started');
+    }
+    startTimer(duration) {
+        this.state = 'start';
+        clearInterval(this.interval);
+        this.timer = duration * 60;
+        this.updateTimeValue();
+        this.interval = setInterval(() => {
+            this.updateTimeValue();
+        }, 1000);
+    }
+    stopTimer() {
+        clearInterval(this.interval);
+        this.time.next('00:00');
+        this.state = 'stop';
+    }
+    updateTimeValue() {
+        let minutes = this.timer / 60;
+        let seconds = this.timer % 60;
+        minutes = String('0' + Math.floor(minutes)).slice(-2);
+        seconds = String('0' + Math.floor(seconds)).slice(-2);
+        const text = minutes + ':' + seconds;
+        this.time.next(text);
+        const totalTime = this.startDuration * 60;
+        const percentage = ((totalTime - this.timer) / totalTime) * 100;
+        this.percent.next(percentage);
+        --this.timer;
+        if (this.timer < -1) {
+            this.startTimer(this.startDuration);
+        }
+    }
+    percentageOffset(percent) {
+        const percentFloat = percent / 100;
+        return circleDasharray * (1 - percentFloat);
+    }
 };
 Tab2Page.ctorParameters = () => [];
 Tab2Page = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
@@ -138,7 +185,7 @@ Tab2PageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Session Timer\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-header collapse=\"condense\">\r\n    <ion-toolbar>\r\n      <ion-title size=\"large\">Session Timer</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <main>\r\n    <div id=\"TimeText\">Set Timer Below</div>\r\n    <div id=\"Timer\">00:00</div>\r\n    <div id=\"TimerButton\">Start</div>\r\n  </main>\r\n</ion-content>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<!--<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Session Timer\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>-->\r\n\r\n<!--<ion-content [fullscreen]=\"true\">\r\n  <ion-header collapse=\"condense\">\r\n    <ion-toolbar>\r\n      <ion-title size=\"large\">Session Timer</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <app-explore-container name=\"Session Timer\"></app-explore-container>\r\n</ion-content>--->\r\n\r\n<ion-content>\r\n  <ion-row class=\"ion-justify-content-center\">\r\n  <svg\r\n    id=\"progress-circle\"\r\n    width=\"50vh\"\r\n    height=\"50vh\"\r\n    viewBox=\"0 0 200 200\"\r\n  >\r\n    <linearGradient id=\"linearColors1\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\r\n      <stop offset=\"0%\" stop-color=\"#aeb6bf\"></stop>\r\n      <stop offset=\"100%\" stop-color=\"#2e4053\"></stop>\r\n    </linearGradient>-->\r\n    <circle\r\n      cx=\"50%\"\r\n      cy=\"50%\"\r\n      [attr.r]=\"circleR\"\r\n      fill=\"none\"\r\n      stroke=\"#f3f3f3\"\r\n      stroke-width=\"12\"\r\n    />\r\n    <circle\r\n      cx=\"50%\"\r\n      cy=\"50%\"\r\n      [attr.r]=\"circleR\"\r\n      fill=\"none\"\r\n      stroke=\"url(#linearColors1)\"\r\n      stroke-width=\"12\"\r\n      stroke-linecap=\"round\"\r\n      [attr.stroke-dasharray]=\"circleDasharray\"\r\n      [attr.stroke-dashoffset]=\"percentageOffset(percent | async)\"\r\n    \r\n    />\r\n    <text x=\"50%\" y=\"55%\" class=\"timer-text\">{{ time | async }}</text>\r\n  </svg>\r\n  </ion-row>\r\n  </ion-content>\r\n<ion-footer>\r\n  <ion-button *ngIf=\"state === 'stop'\" expand=\"block\" style=\"--background:  #229954\" (click)=\"startTimer(startDuration)\">\r\n    Start Timer</ion-button>\r\n <ion-button *ngIf=\"state === 'start'\" expand=\"block\" style=\"--background:  #a93226 \" (click)=\"stopTimer()\">\r\n      Stop Timer</ion-button>\r\n</ion-footer>\r\n");
 
 /***/ })
 
