@@ -4,6 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 const circleR = 80;
 const circleDasharray = 2 * Math.PI * circleR;
 
+
+
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -12,7 +14,7 @@ const circleDasharray = 2 * Math.PI * circleR;
 export class Tab2Page {
   time: BehaviorSubject<string> = new BehaviorSubject('00:00');
   percent: BehaviorSubject<number> = new BehaviorSubject(100);
-
+  minutes:number;
   timer: number; //in seconds
 
   interval;
@@ -23,7 +25,8 @@ export class Tab2Page {
   circleDasharray = circleDasharray;
   state: 'start' | 'stop' = 'stop';
 
-  constructor() {}
+  constructor() {
+    }
 
   click(){
     alert('Meditation Session Started')
@@ -61,8 +64,12 @@ export class Tab2Page {
     this.percent.next(percentage);
 
     --this.timer;
-    if (this.timer < -1){
-      this.startTimer(this.startDuration);
+    if (this.timer < 0){
+      this.stopTimer();
+      let audio = new Audio();
+      audio.src = "./assets/audio/gong.wav";
+      audio.load();
+      audio.play();
     }
   }
 

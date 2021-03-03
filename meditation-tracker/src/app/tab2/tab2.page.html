@@ -46,11 +46,15 @@
     />
     <text x="50%" y="55%" class="timer-text">{{ time | async }}</text>
   </svg>
-  </ion-row>
+  </ion-row> 
 </div>
-  </ion-content>
+</ion-content>
 <ion-footer>
-  <ion-button *ngIf="state === 'stop'" expand="block" style="--background:  #229954" (click)="startTimer(startDuration)">
+  <ion-item>
+    <ion-label position="floating">How Many Minutes?</ion-label>
+    <ion-input type="number" [(ngModel)]="minutes"></ion-input>
+  </ion-item>
+  <ion-button *ngIf="state === 'stop'" expand="block" style="--background:  #229954" (click)="startTimer(minutes)">
     Start Timer</ion-button>
  <ion-button *ngIf="state === 'start'" expand="block" style="--background:  #a93226 " (click)="stopTimer()">
       Stop Timer</ion-button>
