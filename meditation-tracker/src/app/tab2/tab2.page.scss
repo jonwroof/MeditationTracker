@@ -1,0 +1,12 @@
+#progress-circle{
+    transform: rotate(-90deg);
+}
+
+.timer-text {
+    transform: rotate(90deg);
+    transform-origin: center;
+    font-size: 36px;
+    text-anchor: middle;
+    font-weight: 600;
+    fill:  #7f8c8d ;
+}

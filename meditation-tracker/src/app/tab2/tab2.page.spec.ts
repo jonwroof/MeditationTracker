@@ -11,7 +11,7 @@ describe('Tab2Page', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [Tab2Page],
-      imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
+      //imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(Tab2Page);
