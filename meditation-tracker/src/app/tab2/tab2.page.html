@@ -1,22 +1,18 @@
-<!--<ion-header [translucent]="true">
+<ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
       Session Timer
     </ion-title>
   </ion-toolbar>
-</ion-header>-->
+</ion-header>
 
-<!--<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Session Timer</ion-title>
     </ion-toolbar>
   </ion-header>
-<<<<<<< HEAD
-  <app-explore-container name="Session Timer"></app-explore-container>
-</ion-content>--->
-
-<ion-content>
+  <div id="TimerDiv">
   <ion-row class="ion-justify-content-center">
   <svg
     id="progress-circle"
@@ -51,6 +47,7 @@
     <text x="50%" y="55%" class="timer-text">{{ time | async }}</text>
   </svg>
   </ion-row>
+</div>
   </ion-content>
 <ion-footer>
   <ion-button *ngIf="state === 'stop'" expand="block" style="--background:  #229954" (click)="startTimer(startDuration)">
