@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { AlertController, NavController } from '@ionic/angular';
 
 const circleR = 80;
 const circleDasharray = 2 * Math.PI * circleR;
@@ -25,13 +26,38 @@ export class Tab2Page {
   circleDasharray = circleDasharray;
   state: 'start' | 'stop' = 'stop';
 
-  constructor() {
+  constructor(public alertController: AlertController, private nav : NavController) {
     }
 
   click(){
     alert('Meditation Session Started')
   }
+  async someAsyncOperation(){}
+  async presentSessionAlert() {
+    const alert = await this.alertController.create({
+      // cssClass: 'my-custom-class',
+      header: 'Save Session?',
+      // subHeader: 'Subtitle',
+      // message: 'Choose whether to save your session, take notes, or cancel',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          handler: () => {
+            this.nav.navigateRoot('tabs/tab3');
+          }
+        }
+      ]
+    });
 
+    await alert.present();
+  }
   startTimer(duration: number){
     this.state = 'start';
     clearInterval(this.interval);
@@ -59,7 +85,7 @@ export class Tab2Page {
     const text = minutes + ':' + seconds;
     this.time.next(text);
 
-    const totalTime = this.startDuration * 60;
+    const totalTime = this.minutes * 60;
     const percentage = ((totalTime - this.timer) / totalTime) * 100;
     this.percent.next(percentage);
 
@@ -70,6 +96,7 @@ export class Tab2Page {
       audio.src = "./assets/audio/gong.wav";
       audio.load();
       audio.play();
+      this.presentSessionAlert();
     }
   }
 
