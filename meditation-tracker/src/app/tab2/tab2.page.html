@@ -52,9 +52,9 @@
 <ion-footer>
   <ion-item>
     <ion-label position="floating">How Many Minutes?</ion-label>
-    <ion-input type="number" [(ngModel)]="minutes"></ion-input>
+    <ion-input type="number" [(ngModel)]="minuteinput"></ion-input>
   </ion-item>
-  <ion-button *ngIf="state === 'stop'" expand="block" style="--background:  #229954" (click)="startTimer(minutes)">
+  <ion-button *ngIf="state === 'stop'" expand="block" style="--background:  #229954" (click)="startTimer(minuteinput)">
     Start Timer</ion-button>
  <ion-button *ngIf="state === 'start'" expand="block" style="--background:  #a93226 " (click)="stopTimer()">
       Stop Timer</ion-button>

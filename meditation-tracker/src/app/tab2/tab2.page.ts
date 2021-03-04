@@ -15,9 +15,12 @@ const circleDasharray = 2 * Math.PI * circleR;
 export class Tab2Page {
   time: BehaviorSubject<string> = new BehaviorSubject('00:00');
   percent: BehaviorSubject<number> = new BehaviorSubject(100);
+  minuteinput:number;
   minutes:number;
   timer: number; //in seconds
-
+  start: Date;
+  finish: number;
+  totalTime: number;
   interval;
 
   startDuration = 1;
@@ -32,7 +35,6 @@ export class Tab2Page {
   click(){
     alert('Meditation Session Started')
   }
-  async someAsyncOperation(){}
   async presentSessionAlert() {
     const alert = await this.alertController.create({
       // cssClass: 'my-custom-class',
@@ -60,12 +62,14 @@ export class Tab2Page {
   }
   startTimer(duration: number){
     this.state = 'start';
+    this.finish = Date.now()+duration*60000;
+    this.totalTime = duration * 60;
     clearInterval(this.interval);
-    this.timer = duration * 60;
-    this.updateTimeValue();
+    this.timer = this.minuteinput * 60;
+    // this.updateTimeValue();
     this.interval = setInterval( () => {
       this.updateTimeValue();
-    }, 1000);
+    }, 25);
   }
 
   stopTimer(){
@@ -76,8 +80,8 @@ export class Tab2Page {
 
 
   updateTimeValue(){
-    let minutes: any = this.timer / 60;
-    let seconds: any = this.timer % 60;
+    let minutes: any = (this.finish-Date.now()) / 60000.0;
+    let seconds: any = ((this.finish-Date.now()) / 1000.0) % 60.0;
 
     minutes = String ('0' + Math.floor(minutes)).slice(-2);
     seconds = String('0' + Math.floor(seconds)).slice(-2);
@@ -85,12 +89,12 @@ export class Tab2Page {
     const text = minutes + ':' + seconds;
     this.time.next(text);
 
-    const totalTime = this.minutes * 60;
-    const percentage = ((totalTime - this.timer) / totalTime) * 100;
+    
+    const percentage =101-((((this.finish-Date.now())/1000) / this.totalTime) * 100);
     this.percent.next(percentage);
 
     --this.timer;
-    if (this.timer < 0){
+    if (minutes + seconds == 0){
       this.stopTimer();
       let audio = new Audio();
       audio.src = "./assets/audio/gong.wav";
