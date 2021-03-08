@@ -1,7 +1,0 @@
-{
-  "name": "meditation-tracker",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "angular"
-}
