@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
 export class Tab1Page {
 
   constructor() {}
-
+  playGong(){
+    let audio = new Audio();
+    audio.src = "./assets/audio/gong.wav";
+    audio.load();
+    audio.play();
+}
 }

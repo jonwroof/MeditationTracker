@@ -51,9 +51,6 @@ let Tab2Page = class Tab2Page {
     click() {
         alert('Meditation Session Started');
     }
-    someAsyncOperation() {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () { });
-    }
     presentSessionAlert() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             const alert = yield this.alertController.create({
@@ -82,12 +79,14 @@ let Tab2Page = class Tab2Page {
     }
     startTimer(duration) {
         this.state = 'start';
+        this.finish = Date.now() + duration * 60000;
+        this.totalTime = duration * 60;
         clearInterval(this.interval);
-        this.timer = duration * 60;
-        this.updateTimeValue();
+        this.timer = this.minuteinput * 60;
+        // this.updateTimeValue();
         this.interval = setInterval(() => {
             this.updateTimeValue();
-        }, 1000);
+        }, 25);
     }
     stopTimer() {
         clearInterval(this.interval);
@@ -95,17 +94,16 @@ let Tab2Page = class Tab2Page {
         this.state = 'stop';
     }
     updateTimeValue() {
-        let minutes = this.timer / 60;
-        let seconds = this.timer % 60;
+        let minutes = (this.finish - Date.now()) / 60000.0;
+        let seconds = ((this.finish - Date.now()) / 1000.0) % 60.0;
         minutes = String('0' + Math.floor(minutes)).slice(-2);
         seconds = String('0' + Math.floor(seconds)).slice(-2);
         const text = minutes + ':' + seconds;
         this.time.next(text);
-        const totalTime = this.startDuration * 60;
-        const percentage = ((totalTime - this.timer) / totalTime) * 100;
+        const percentage = 101 - ((((this.finish - Date.now()) / 1000) / this.totalTime) * 100);
         this.percent.next(percentage);
         --this.timer;
-        if (this.timer < 0) {
+        if (minutes + seconds == 0) {
             this.stopTimer();
             let audio = new Audio();
             audio.src = "./assets/audio/gong.wav";
@@ -226,7 +224,7 @@ Tab2PageRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Session Timer\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-header collapse=\"condense\">\r\n    <ion-toolbar>\r\n      <ion-title size=\"large\">Session Timer</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <div id=\"TimerDiv\">\r\n  <ion-row class=\"ion-justify-content-center\">\r\n  <svg\r\n    id=\"progress-circle\"\r\n    width=\"50vh\"\r\n    height=\"50vh\"\r\n    viewBox=\"0 0 200 200\"\r\n  >\r\n    <linearGradient id=\"linearColors1\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\r\n      <stop offset=\"0%\" stop-color=\"#aeb6bf\"></stop>\r\n      <stop offset=\"100%\" stop-color=\"#2e4053\"></stop>\r\n    </linearGradient>-->\r\n    <circle\r\n      cx=\"50%\"\r\n      cy=\"50%\"\r\n      [attr.r]=\"circleR\"\r\n      fill=\"none\"\r\n      stroke=\"#f3f3f3\"\r\n      stroke-width=\"12\"\r\n    />\r\n    <circle\r\n      cx=\"50%\"\r\n      cy=\"50%\"\r\n      [attr.r]=\"circleR\"\r\n      fill=\"none\"\r\n      stroke=\"url(#linearColors1)\"\r\n      stroke-width=\"12\"\r\n      stroke-linecap=\"round\"\r\n      [attr.stroke-dasharray]=\"circleDasharray\"\r\n      [attr.stroke-dashoffset]=\"percentageOffset(percent | async)\"\r\n    \r\n    />\r\n    <text x=\"50%\" y=\"55%\" class=\"timer-text\">{{ time | async }}</text>\r\n  </svg>\r\n  </ion-row> \r\n</div>\r\n</ion-content>\r\n<ion-footer>\r\n  <ion-item>\r\n    <ion-label position=\"floating\">How Many Minutes?</ion-label>\r\n    <ion-input type=\"number\" [(ngModel)]=\"minutes\"></ion-input>\r\n  </ion-item>\r\n  <ion-button *ngIf=\"state === 'stop'\" expand=\"block\" style=\"--background:  #229954\" (click)=\"startTimer(minutes)\">\r\n    Start Timer</ion-button>\r\n <ion-button *ngIf=\"state === 'start'\" expand=\"block\" style=\"--background:  #a93226 \" (click)=\"stopTimer()\">\r\n      Stop Timer</ion-button>\r\n</ion-footer>\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Session Timer\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content [fullscreen]=\"true\">\r\n  <ion-header collapse=\"condense\">\r\n    <ion-toolbar>\r\n      <ion-title size=\"large\">Session Timer</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header>\r\n  <div id=\"TimerDiv\">\r\n  <ion-row class=\"ion-justify-content-center\">\r\n  <svg\r\n    id=\"progress-circle\"\r\n    width=\"50vh\"\r\n    height=\"50vh\"\r\n    viewBox=\"0 0 200 200\"\r\n  >\r\n    <linearGradient id=\"linearColors1\" x1=\"0\" y1=\"0\" x2=\"1\" y2=\"1\">\r\n      <stop offset=\"0%\" stop-color=\"#aeb6bf\"></stop>\r\n      <stop offset=\"100%\" stop-color=\"#2e4053\"></stop>\r\n    </linearGradient>-->\r\n    <circle\r\n      cx=\"50%\"\r\n      cy=\"50%\"\r\n      [attr.r]=\"circleR\"\r\n      fill=\"none\"\r\n      stroke=\"#f3f3f3\"\r\n      stroke-width=\"12\"\r\n    />\r\n    <circle\r\n      cx=\"50%\"\r\n      cy=\"50%\"\r\n      [attr.r]=\"circleR\"\r\n      fill=\"none\"\r\n      stroke=\"url(#linearColors1)\"\r\n      stroke-width=\"12\"\r\n      stroke-linecap=\"round\"\r\n      [attr.stroke-dasharray]=\"circleDasharray\"\r\n      [attr.stroke-dashoffset]=\"percentageOffset(percent | async)\"\r\n    \r\n    />\r\n    <text x=\"50%\" y=\"55%\" class=\"timer-text\">{{ time | async }}</text>\r\n  </svg>\r\n  </ion-row> \r\n</div>\r\n</ion-content>\r\n<ion-footer>\r\n  <ion-item>\r\n    <ion-label position=\"floating\">How Many Minutes?</ion-label>\r\n    <ion-input type=\"number\" [(ngModel)]=\"minuteinput\"></ion-input>\r\n  </ion-item>\r\n  <ion-button *ngIf=\"state === 'stop'\" expand=\"block\" style=\"--background:  #229954\" (click)=\"startTimer(minuteinput)\">\r\n    Start Timer</ion-button>\r\n <ion-button *ngIf=\"state === 'start'\" expand=\"block\" style=\"--background:  #a93226 \" (click)=\"stopTimer()\">\r\n      Stop Timer</ion-button>\r\n</ion-footer>\r\n\r\n");
 
 /***/ })
 
