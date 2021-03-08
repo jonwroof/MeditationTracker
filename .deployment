@@ -1,2 +1,3 @@
-[config]
-project = .\meditation-tracker
+@echo off
+echo Deploying Functions ...
+xcopy "%DEPLOYMENT_SOURCE%\meditation-tracker" %DEPLOYMENT_TARGET% /Y /S
