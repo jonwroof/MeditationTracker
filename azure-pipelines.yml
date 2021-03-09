@@ -14,15 +14,17 @@ steps:
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/www'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
+
 - script: |
     npm install
     npm install @ionic/cli
     ionic build --prod
   displayName: 'npm install and build'
+
+- task: ArchiveFiles@2
+  inputs:
+        rootFolderOrFile: '$(System.DefaultWorkingDirectory)/www'
+        includeRootFolder: true
+        archiveType: 'zip'
+        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+        replaceExistingArchive: true
