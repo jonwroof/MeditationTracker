@@ -33,5 +33,5 @@ steps:
     azureSubscription: 'Azure for Students(e33e88ad-c9bc-4c97-b54b-0855b2e80674)'
     appType: 'webApp'
     WebAppName: 'meditation-tracker'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
 
