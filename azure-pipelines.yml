@@ -23,5 +23,6 @@ steps:
     replaceExistingArchive: true
 - script: |
     npm install
-    npm build --prod
+    npm install @ionic/cli
+    ionic build --prod
   displayName: 'npm install and build'
