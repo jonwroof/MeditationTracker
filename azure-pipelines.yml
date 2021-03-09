@@ -34,4 +34,6 @@ steps:
     appType: 'webApp'
     WebAppName: 'meditation-tracker'
     packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    
+- task: PublishBuildArtifacts@1
 
