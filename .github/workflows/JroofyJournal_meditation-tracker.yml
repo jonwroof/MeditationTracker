@@ -26,9 +26,9 @@ jobs:
         npm install
         npm install -g ionic@latest
         ionic build --prod
-        ionic serve
 
     - name: 'Deploy to Azure Web App'
+      run: ionic serve
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'meditation-tracker'
