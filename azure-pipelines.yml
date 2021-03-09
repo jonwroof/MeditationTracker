@@ -17,8 +17,7 @@ steps:
 
 - script: |
     npm install
-    npm install @ionic/cli
-    ionic build --prod
+    npm build --prod
   displayName: 'npm install and build'
 
 - task: ArchiveFiles@2
