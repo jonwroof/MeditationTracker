@@ -23,7 +23,8 @@ jobs:
 
     - name: npm install, build, and test
       run: |
-        npm install ionic
+        npm install
+        npm install -g ionic@latest
         ionic build --prod
         ionic serve
 
