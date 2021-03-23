@@ -69,7 +69,7 @@ export class Tab2Page {
     // this.updateTimeValue();
     this.interval = setInterval( () => {
       this.updateTimeValue();
-    }, 25);
+    }, 16.6666);
   }
 
   stopTimer(){
