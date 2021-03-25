@@ -1,7 +1,7 @@
 # MeditationTracker
 1.Team/project names
 
-Fhroofy/ Meditation Tracker
+Fhjroofy/ Meditation Tracker
 
 2.Repo location URL
 
