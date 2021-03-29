@@ -18,9 +18,13 @@
   <ion-label position="floating">Meditation Session Notes</ion-label>
   <ion-textarea rows=20 columns=10 placeholder="Enter any notes here..."></ion-textarea>
 </ion-item>
+<ion-item>
+  <ion-label position="floating">Tags</ion-label>
+  <ion-textarea placeholder="Enter tags here..."></ion-textarea>
+</ion-item>
 </div>
 </ion-content>
 
 <ion-footer>
-  <ion-button  expand="block" style="--background:  #aeb6bf" (click)="saveNotes">Save Notes</ion-button>
+  <ion-button  expand="block" style="--background:  #aeb6bf" (click)="saveNotes()">Save Notes</ion-button>
 </ion-footer>

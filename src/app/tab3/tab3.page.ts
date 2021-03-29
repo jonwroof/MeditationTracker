@@ -23,7 +23,7 @@ export class Tab3Page {
           }
         },
         {
-          text: 'Notes Saved',
+          text: 'Save',
           handler: () => {
             this.nav.navigateRoot('tabs/tab4');
           }
@@ -34,7 +34,7 @@ export class Tab3Page {
     await alert.present();
   }
 
-  //not working presently...
+
  saveNotes(){
     this.presentSessionAlert();
   }
