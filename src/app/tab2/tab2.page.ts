@@ -22,7 +22,7 @@ export class Tab2Page {
   finish: number;
   totalTime: number;
   interval;
-
+  sound:string;
   startDuration = 1;
 
   circleR = circleR;
@@ -82,7 +82,7 @@ export class Tab2Page {
   updateTimeValue(){
     let minutes: any = (this.finish-Date.now()) / 60000.0;
     let seconds: any = ((this.finish-Date.now()) / 1000.0) % 60.0;
-
+    this.sound = (<HTMLSelectElement>document.getElementById('alarmsound')).value;
     minutes = String ('0' + Math.floor(minutes)).slice(-2);
     seconds = String('0' + Math.floor(seconds)).slice(-2);
 
@@ -97,13 +97,20 @@ export class Tab2Page {
     if (minutes + seconds == 0){
       this.stopTimer();
       let audio = new Audio();
-      audio.src = "./assets/audio/gong.wav";
+      if(this.sound=="gong"){
+        audio.src = "./assets/audio/gong.wav";
+      }else 
+      if(this.sound=="bowl"){
+        audio.src = "./assets/audio/bowl.wav";
+      }else 
+      if(this.sound=="block"){
+        audio.src = "./assets/audio/block.wav";
+      }
       audio.load();
       audio.play();
       this.presentSessionAlert();
     }
   }
-
   percentageOffset(percent){
     const percentFloat = percent / 100;
     return circleDasharray * (1 - percentFloat);
