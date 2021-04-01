@@ -12,6 +12,14 @@
       <ion-title size="large">Session Timer</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-item>
+    <ion-label>Alarm Sound</ion-label>
+    <ion-select value="gong" id="alarmsound">
+      <ion-select-option value="gong">Gong</ion-select-option>
+      <ion-select-option value="bowl">Singing Bowl</ion-select-option>
+      <ion-select-option value="block">Wood Block</ion-select-option>
+    </ion-select>
+  </ion-item>
   <div id="TimerDiv">
   <ion-row class="ion-justify-content-center">
   <svg
@@ -50,6 +58,7 @@
 </div>
 </ion-content>
 <ion-footer>
+  
   <ion-item>
     <ion-label position="floating">How Many Minutes?</ion-label>
     <ion-input type="number" [(ngModel)]="minuteinput"></ion-input>
