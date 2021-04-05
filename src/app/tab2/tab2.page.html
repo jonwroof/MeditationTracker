@@ -14,7 +14,7 @@
   </ion-header>
   <ion-item>
     <ion-label>Alarm Sound</ion-label>
-    <ion-select value="gong" id="alarmsound">
+    <ion-select value="gong" id="alarmsound" [(ngModel)]="sound">
       <ion-select-option value="gong">Gong</ion-select-option>
       <ion-select-option value="bowl">Singing Bowl</ion-select-option>
       <ion-select-option value="block">Wood Block</ion-select-option>
@@ -61,7 +61,7 @@
   
   <ion-item>
     <ion-label position="floating">How Many Minutes?</ion-label>
-    <ion-input type="number" [(ngModel)]="minuteinput"></ion-input>
+    <ion-input type="number" [(ngModel)]="minuteinput" [min]="0" placeholder="10"></ion-input>
   </ion-item>
   <ion-button *ngIf="state === 'stop'" expand="block" style="--background:  #229954" (click)="startTimer(minuteinput)">
     Start Timer</ion-button>
