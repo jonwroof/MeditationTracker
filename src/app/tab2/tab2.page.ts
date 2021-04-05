@@ -22,7 +22,7 @@ export class Tab2Page {
   finish: number;
   totalTime: number;
   interval;
-  sound:string;
+  sound:string = "gong";
   startDuration = 1;
 
   circleR = circleR;
@@ -60,7 +60,29 @@ export class Tab2Page {
 
     await alert.present();
   }
+  async presentNumberAlert() {
+    const alert = await this.alertController.create({
+      // cssClass: 'my-custom-class',
+      header: 'Whoops!',
+      // subHeader: 'Subtitle',
+      message: 'Please enter a number above Zero, you\'re here to meditate, not to not meditate',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'OK',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
   startTimer(duration: number){
+    if(this.minuteinput<=0 || this.minuteinput==null){
+      this.presentNumberAlert();
+    }else{
     this.state = 'start';
     this.finish = Date.now()+duration*60000;
     this.totalTime = duration * 60;
@@ -69,7 +91,8 @@ export class Tab2Page {
     // this.updateTimeValue();
     this.interval = setInterval( () => {
       this.updateTimeValue();
-    }, 16.6666);
+    }, 6.9);
+  }
   }
 
   stopTimer(){
@@ -82,19 +105,18 @@ export class Tab2Page {
   updateTimeValue(){
     let minutes: any = (this.finish-Date.now()) / 60000.0;
     let seconds: any = ((this.finish-Date.now()) / 1000.0) % 60.0;
-    this.sound = (<HTMLSelectElement>document.getElementById('alarmsound')).value;
-    minutes = String ('0' + Math.floor(minutes)).slice(-2);
-    seconds = String('0' + Math.floor(seconds)).slice(-2);
+    let minutes_str = String ('0' + Math.floor(minutes)).slice(-2);
+    let seconds_str = String('0' + Math.floor(seconds)).slice(-2);
 
-    const text = minutes + ':' + seconds;
+    const text = minutes_str + ':' + seconds_str;
     this.time.next(text);
 
     
-    const percentage =101-((((this.finish-Date.now())/1000) / this.totalTime) * 100);
+    const percentage =100-((((this.finish-Date.now())/1000) / this.totalTime) * 100);
     this.percent.next(percentage);
 
     --this.timer;
-    if (minutes + seconds == 0){
+    if (minutes + seconds <= 0){
       this.stopTimer();
       let audio = new Audio();
       if(this.sound=="gong"){
