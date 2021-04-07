@@ -25,6 +25,8 @@
     "@ionic/angular": "^5.5.2",
     "@ionic/storage": "^3.0.0-alpha.2",
     "@ionic/storage-angular": "^3.0.2",
+    "@ionic/app-scripts": "3.2.1",
+    "typescript": "~4.0.2",
     "intl": "^1.2.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
