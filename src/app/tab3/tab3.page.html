@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Journal Entry
+      Journal Entries
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -10,22 +10,13 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Journal Entry</ion-title>
+      <ion-title size="large">Journal Entries</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div id="stuff">
-<ion-item>
-  <ion-label position="floating">Meditation Session Notes</ion-label>
-  <ion-textarea rows=30 columns=10 placeholder="Enter any notes here..."></ion-textarea>
-</ion-item>
-<!-- <ion-item>
-  <ion-label position="floating">Tags</ion-label>
-  <ion-textarea placeholder="Enter tags here..."></ion-textarea>
-</ion-item> -->
-</div>
+  <ion-list>
+    <ion-item *ngFor="let temp of journalServ.myJournal">
+      <ion-label position="floating">{{temp.entrydate | date : 'medium' }}</ion-label><br>
+      <p class="tags">Tags: {{temp.tags.join(', ')}}</p>
+    </ion-item>
+  </ion-list>
 </ion-content>
-
-<ion-footer>
-  <ion-textarea placeholder="Enter tags here..."></ion-textarea>
-  <ion-button  expand="block" style="--background:  #aeb6bf" (click)="saveNotes()">Save Notes</ion-button>
-</ion-footer>
