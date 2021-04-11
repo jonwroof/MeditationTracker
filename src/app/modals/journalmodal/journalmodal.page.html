@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create Journal Entry</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Journal Entry</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item style="margin-bottom: 0px; height:100%;">
+    <ion-label position="floating">Meditation Session Notes</ion-label>
+    <ion-label ion-hide="journal.sessionlength==null" position="floating">Session {{ID+1}} Length: {{
+      journal.sessionlength }} minutes
+    </ion-label>
+    <ion-textarea [(ngModel)]="journalinput" auto-grow="true" 
+      placeholder="Enter any notes here...">
+    </ion-textarea>
+  </ion-item>
+
+  <ion-item slot="fixed" style="margin-bottom: 0px; padding-bottom: 0px; bottom:0px; width:100%;">
+    <ion-label position="floating">Tags</ion-label>
+    <ion-textarea [(ngModel)]="tagtext" placeholder="Enter tags here separated by commas..."></ion-textarea>
+    <ion-button expand="block" style="--background:  #229954" (click)="closeModal()">Save Notes</ion-button>
+  </ion-item>
+</ion-content>

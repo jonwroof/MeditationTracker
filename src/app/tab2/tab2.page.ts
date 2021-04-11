@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { AlertController, NavController } from '@ionic/angular';
-
+import { JournalService } from '../journal.service';
+import { ModalController } from '@ionic/angular';
+import { JournalmodalPage } from '../modals/journalmodal/journalmodal.page';
 const circleR = 80;
 const circleDasharray = 2 * Math.PI * circleR;
 
@@ -12,28 +14,38 @@ const circleDasharray = 2 * Math.PI * circleR;
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit {
   time: BehaviorSubject<string> = new BehaviorSubject('00:00');
   percent: BehaviorSubject<number> = new BehaviorSubject(100);
-  minuteinput:number;
-  minutes:number;
+  minuteinput: number;
+  minutes: number;
   timer: number; //in seconds
   start: Date;
   finish: number;
   totalTime: number;
   interval;
-  sound:string = "gong";
+  sound: string = "gong";
   startDuration = 1;
-
+  journal: any;
   circleR = circleR;
   circleDasharray = circleDasharray;
   state: 'start' | 'stop' = 'stop';
 
-  constructor(public alertController: AlertController, private nav : NavController) {
-    }
+  constructor(public alertController: AlertController, private nav: NavController, private journalService: JournalService, public modalController: ModalController) {
+  }
+  ngOnInit(): void {
+    this.journal = this.journalService;
+  }
+  async openModal() {
+    const modal = await this.modalController.create({
+      component: JournalmodalPage,
+      componentProps: {
+        "ID": this.journal.myJournal.length
+      }
+    });
 
-  click(){
-    alert('Meditation Session Started')
+
+    return await modal.present();
   }
   async presentSessionAlert() {
     const alert = await this.alertController.create({
@@ -52,7 +64,8 @@ export class Tab2Page {
         {
           text: 'Save',
           handler: () => {
-            this.nav.navigateRoot('tabs/tab3');
+            this.journal.sessionlength = this.minuteinput;
+            this.openModal();
           }
         }
       ]
@@ -79,61 +92,62 @@ export class Tab2Page {
 
     await alert.present();
   }
-  startTimer(duration: number){
-    if(this.minuteinput<=0 || this.minuteinput==null){
+  startTimer(duration: number) {
+    if (this.minuteinput <= 0 || this.minuteinput == null) {
       this.presentNumberAlert();
-    }else{
-    this.state = 'start';
-    this.finish = Date.now()+duration*60000;
-    this.totalTime = duration * 60;
-    clearInterval(this.interval);
-    this.timer = this.minuteinput * 60;
-    // this.updateTimeValue();
-    this.interval = setInterval( () => {
-      this.updateTimeValue();
-    }, 6.9);
-  }
+    } else {
+      this.state = 'start';
+      this.finish = Date.now() + duration * 60000;
+      this.totalTime = duration * 60;
+      clearInterval(this.interval);
+      this.timer = this.minuteinput * 60;
+      // this.updateTimeValue();
+      this.interval = setInterval(() => {
+        this.updateTimeValue();
+      }, 6.9);
+    }
   }
 
-  stopTimer(){
+  stopTimer() {
     clearInterval(this.interval);
+    this.percent.next(100);
     this.time.next('00:00');
     this.state = 'stop';
   }
 
 
-  updateTimeValue(){
-    let minutes: any = (this.finish-Date.now()) / 60000.0;
-    let seconds: any = ((this.finish-Date.now()) / 1000.0) % 60.0;
-    let minutes_str = String ('0' + Math.floor(minutes)).slice(-2);
+  updateTimeValue() {
+    let minutes: any = (this.finish - Date.now()) / 60000.0;
+    let seconds: any = ((this.finish - Date.now()) / 1000.0) % 60.0;
+    let minutes_str = String('0' + Math.floor(minutes)).slice(-2);
     let seconds_str = String('0' + Math.floor(seconds)).slice(-2);
 
     const text = minutes_str + ':' + seconds_str;
     this.time.next(text);
 
-    
-    const percentage =100-((((this.finish-Date.now())/1000) / this.totalTime) * 100);
+
+    const percentage = 100 - ((((this.finish - Date.now()) / 1000) / this.totalTime) * 100);
     this.percent.next(percentage);
 
     --this.timer;
-    if (minutes + seconds <= 0){
+    if (minutes + seconds <= 0) {
       this.stopTimer();
       let audio = new Audio();
-      if(this.sound=="gong"){
+      if (this.sound == "gong") {
         audio.src = "./assets/audio/gong.wav";
-      }else 
-      if(this.sound=="bowl"){
-        audio.src = "./assets/audio/bowl.wav";
-      }else 
-      if(this.sound=="block"){
-        audio.src = "./assets/audio/block.wav";
-      }
+      } else
+        if (this.sound == "bowl") {
+          audio.src = "./assets/audio/bowl.wav";
+        } else
+          if (this.sound == "block") {
+            audio.src = "./assets/audio/block.wav";
+          }
       audio.load();
       audio.play();
       this.presentSessionAlert();
     }
   }
-  percentageOffset(percent){
+  percentageOffset(percent) {
     const percentFloat = percent / 100;
     return circleDasharray * (1 - percentFloat);
   }

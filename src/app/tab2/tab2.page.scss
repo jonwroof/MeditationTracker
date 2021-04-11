@@ -11,6 +11,14 @@
     fill:  #7f8c8d ;
 }
 
-#TimerDiv{
-    margin-top: 100px;
+#progress-circle{
+    margin:auto;
+    margin-top: -2em;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 720px;
+}
+.platform-android #progress-circle {
+    width: 100%;
 }
