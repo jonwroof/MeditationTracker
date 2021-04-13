@@ -37,6 +37,7 @@ export class JournalService {
   public removeEntry(tempEntry: JournalEntry){
     this.myJournal.splice(this.myJournal.lastIndexOf(tempEntry), 1);
     this.storage.set('journal', JSON.stringify(this.myJournal));
+    this.nextIndex=this.myJournal.length;
   }
   public saveEntry(tempEntry?: JournalEntry, ID?: number) {
     if (ID == null) {
