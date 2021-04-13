@@ -4,6 +4,7 @@ import {
   NavParams
 } from '@ionic/angular';
 import { JournalService } from 'src/app/journal.service';
+import { JournalEntry } from 'src/app/models/interface.journal';
 @Component({
   selector: 'app-journal-modal',
   templateUrl: './journalmodal.page.html',
@@ -14,7 +15,8 @@ export class JournalmodalPage implements OnInit {
   journal: any;
   journalinput: string;
   tagtext: string;
-  @Input() ID: number;
+  @Input() tempEntry?: JournalEntry;
+  index: number;
   constructor(
     private modalController: ModalController,
     private navParams: NavParams,
@@ -22,14 +24,21 @@ export class JournalmodalPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.journal = this.journalService
+    this.journal = this.journalService;
+    if (this.journalService.myJournal.lastIndexOf(this.tempEntry) != -1) {
+      this.journalinput = this.tempEntry.entrybody;
+      this.tagtext = this.tempEntry.tags.join(', ');
+      this.index = this.journalService.myJournal.lastIndexOf(this.tempEntry);
+    }else{
+      this.index=this.journalService.myJournal.length;
+      this.tempEntry={entrydate: new Date, entrybody: null, tags: [], sessionlength: this.journalService.sessionlength }
+    }
   }
 
   closeModal() {
-    this.journal.entrytext=this.journalinput;
-    this.journal.tagtext=this.tagtext;
-    this.journal.sessiondate=new Date();
-    this.journal.saveEntry();
+    this.tempEntry.entrybody = this.journalinput;
+    this.tempEntry.tags = this.tagtext.split(', ');
+    this.journal.saveEntry(this.tempEntry, this.index);
     this.dismiss();
   }
   dismiss() {

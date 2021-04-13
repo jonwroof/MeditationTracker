@@ -1,22 +1,27 @@
-#progress-circle{
-    transform: rotate(-90deg);
-}
+// #progress-circle{
+//     transform: rotate(-90deg);
+// }
 
 .timer-text {
-    transform: rotate(90deg);
-    transform-origin: center;
+    // transform: rotate(90deg);
+    // transform-origin: center;
     font-size: 36px;
     text-anchor: middle;
     font-weight: 600;
     fill:  #7f8c8d ;
 }
-
+.timerDiv{
+    margin:auto;
+    height:90%;
+    width:100%;
+    overflow:hidden;
+}
 #progress-circle{
     margin:auto;
-    margin-top: -2em;
+    // margin-top: -2em;
     display: block;
     width: 100%;
-    height: 100%;
+    height: 90%;
     max-width: 720px;
 }
 .platform-android #progress-circle {

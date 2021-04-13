@@ -33,14 +33,14 @@ export class Tab2Page implements OnInit {
 
   constructor(public alertController: AlertController, private nav: NavController, private journalService: JournalService, public modalController: ModalController) {
   }
-  ngOnInit(): void {
+  async ngOnInit(){
     this.journal = this.journalService;
   }
   async openModal() {
     const modal = await this.modalController.create({
       component: JournalmodalPage,
       componentProps: {
-        "ID": this.journal.myJournal.length
+        "tempEntry": {entrydate: new Date, sessionlength: this.minuteinput, tags: [], entrybody: null}
       }
     });
 

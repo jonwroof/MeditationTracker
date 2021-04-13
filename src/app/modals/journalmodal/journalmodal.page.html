@@ -11,12 +11,12 @@
       <ion-title size="large">Journal Entry</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-item style="margin-bottom: 0px; height:100%;">
+  <ion-item>
     <ion-label position="floating">Meditation Session Notes</ion-label>
-    <ion-label ion-hide="journal.sessionlength==null" position="floating">Session {{ID+1}} Length: {{
-      journal.sessionlength }} minutes
+    <ion-label ion-hide="journal.sessionlength==null" position="floating">Session Length: {{
+      tempEntry.sessionlength }} minutes
     </ion-label>
-    <ion-textarea [(ngModel)]="journalinput" auto-grow="true" 
+    <ion-textarea [(ngModel)]="journalinput" rows=20
       placeholder="Enter any notes here...">
     </ion-textarea>
   </ion-item>
