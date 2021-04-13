@@ -14,9 +14,17 @@
     </ion-toolbar>
   </ion-header>
   <ion-list>
-    <ion-item *ngFor="let temp of journalServ.myJournal">
-      <ion-label position="floating">{{temp.entrydate | date : 'medium' }}</ion-label><br>
-      <p class="tags">Tags: {{temp.tags.join(', ')}}</p>
-    </ion-item>
+    <ion-item-sliding *ngFor="let temp of journal.myJournal" >
+      <ion-item (click)="openModal(temp)">
+        <ion-label position="floating">{{temp.entrydate | date : 'medium' }}</ion-label><br>
+        <p class="tags">Tags: {{temp.tags.join(', ')}}</p>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" expandable (click)="journal.removeEntry(temp)">
+          <ion-icon name="trash" style="font-size: 42px;"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
   </ion-list>
 </ion-content>

@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { JournalmodalPageRoutingModule } from './journalmodal-routing.module';
 
 import { JournalmodalPage } from './journalmodal.page';
-import { JournalService } from 'src/app/journal.service';
+
 
 
 @NgModule({
@@ -18,6 +18,6 @@ import { JournalService } from 'src/app/journal.service';
     JournalmodalPageRoutingModule
   ],
   declarations: [JournalmodalPage],
-  providers: [JournalService]
+  providers: []
 })
 export class JournalmodalPageModule {}

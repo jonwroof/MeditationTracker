@@ -21,52 +21,30 @@
     </ion-select>
   </ion-item>
   <!-- <ion-row class="ion-justify-content-center"> -->
-  <!-- <ion-row> -->
-  <svg
-    id="progress-circle"
-    width="80vh"
-    height="auto"
-    viewBox="0 0 200 200"
-  >
-    <linearGradient id="linearColors1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#aeb6bf"></stop>
-      <stop offset="100%" stop-color="#2e4053"></stop>
-    </linearGradient>-->
-    <circle
-      cx="50%"
-      cy="50%"
-      [attr.r]="circleR"
-      fill="none"
-      stroke="#f3f3f3"
-      stroke-width="12"
-    />
-    <circle
-      cx="50%"
-      cy="50%"
-      [attr.r]="circleR"
-      fill="none"
-      stroke="url(#linearColors1)"
-      stroke-width="12"
-      stroke-linecap="round"
-      [attr.stroke-dasharray]="circleDasharray"
-      [attr.stroke-dashoffset]="percentageOffset(percent | async)"
-    
-    />
-    <text x="50%" y="55%" class="timer-text">{{ time | async }}</text>
-  </svg>
-  
+    <div class="timerDiv">
+      <svg id="progress-circle" width="50em" height="50em" viewBox="0 0 200 200">
+        <linearGradient id="linearColors1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#aeb6bf"></stop>
+          <stop offset="100%" stop-color="#2e4053"></stop>
+        </linearGradient>-->
+        <circle cx="50%" cy="50%" [attr.r]="circleR" fill="none" stroke="#f3f3f3" stroke-width="12" transform="rotate(-90 100 100)"/>
+        <circle cx="50%" cy="50%" [attr.r]="circleR" fill="none" stroke="url(#linearColors1)" stroke-width="12" transform="rotate(-90 100 100)"
+          stroke-linecap="round" [attr.stroke-dasharray]="circleDasharray"
+          [attr.stroke-dashoffset]="percentageOffset(percent | async)" />
+        <text x="50%" y="55%" class="timer-text">{{ time | async }}</text>
+      </svg>
+    </div>
   <!-- </ion-row> -->
-<!-- </ion-row>  -->
+  <!-- </ion-row>  -->
 </ion-content>
 <ion-footer>
-  
+
   <ion-item>
     <ion-label position="floating">How Many Minutes?</ion-label>
     <ion-input type="number" [(ngModel)]="minuteinput" [min]="0" placeholder="10"></ion-input>
   </ion-item>
   <ion-button *ngIf="state === 'stop'" expand="block" style="--background:  #229954" (click)="startTimer(minuteinput)">
     Start Timer</ion-button>
- <ion-button *ngIf="state === 'start'" expand="block" style="--background:  #a93226 " (click)="stopTimer()">
-      Stop Timer</ion-button>
+  <ion-button *ngIf="state === 'start'" expand="block" style="--background:  #a93226 " (click)="stopTimer()">
+    Stop Timer</ion-button>
 </ion-footer>
-
