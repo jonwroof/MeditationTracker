@@ -25,6 +25,7 @@ export class JournalmodalPage implements OnInit {
 
   ngOnInit() {
     this.journal = this.journalService;
+    this.journal.getJournal();
     if (this.journalService.myJournal.lastIndexOf(this.tempEntry) != -1) {
       this.journalinput = this.tempEntry.entrybody;
       this.tagtext = this.tempEntry.tags.join(', ');

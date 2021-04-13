@@ -40,7 +40,7 @@ export class Tab2Page implements OnInit {
     const modal = await this.modalController.create({
       component: JournalmodalPage,
       componentProps: {
-        "tempEntry": {entrydate: new Date, sessionlength: this.minuteinput, tags: [], entrybody: null}
+        "tempEntry": {entrydate: new Date, sessionlength: this.minuteinput, tags: [], entrybody: ''}
       }
     });
 

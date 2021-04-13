@@ -4,9 +4,8 @@ import { Journal, JournalEntry } from './models/interface.journal';
 @Injectable({
   providedIn: 'root'
 })
-export class JournalService {
+export class JournalService implements OnInit {
   public myJournal: Journal;
-  public entryArray: Array<JournalEntry> = [];
   public myEntry: JournalEntry;
   public sessionlength: number;
   public entrytext: string;
@@ -16,28 +15,48 @@ export class JournalService {
 
   constructor(private storage: Storage) {
     this.storage.create();
+    this.myJournal = [];
     this.nextIndex = 0;
-    this.sessionlength = null;
-    this.entrytext = null;
-    this.tagtext = null;
+    this.sessionlength = 0;
+    this.entrytext = '';
+    this.tagtext = '';
+    this.getJournal();
+  }
+  async ngOnInit() {
+    this.storage.create();
+    this.myJournal = [];
+    this.nextIndex = 0;
+    this.sessionlength = 0;
+    this.entrytext = '';
+    this.tagtext = '';
     this.getJournal();
   }
 
-  async getJournal() {
-    this.storage.get('journal').then((value) => { this.myJournal = JSON.parse(value); console.log(value); });
-    if (this.myJournal == null) {
+  public async getJournal() {
+    try {
+      this.storage.create();
+      const result = await this.storage.get('journal');
+      if (result != null) {
+        this.myJournal = JSON.parse(result);
+      }else{
+        this.myJournal = [];
+      }
+    } catch (reason) {
+      console.log(reason);
       this.myJournal = [];
     }
+
+
     this.nextIndex = this.myJournal.length;
   }
   public async getEntry(index: number): Promise<JournalEntry> {
     await this.storage.get('journal').then((value) => { this.myJournal = JSON.parse(value); console.log(value); });
     return this.myJournal[index];
   }
-  public removeEntry(tempEntry: JournalEntry){
+  public removeEntry(tempEntry: JournalEntry) {
     this.myJournal.splice(this.myJournal.lastIndexOf(tempEntry), 1);
     this.storage.set('journal', JSON.stringify(this.myJournal));
-    this.nextIndex=this.myJournal.length;
+    this.nextIndex = this.myJournal.length;
   }
   public saveEntry(tempEntry?: JournalEntry, ID?: number) {
     if (ID == null) {
