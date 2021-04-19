@@ -20,6 +20,8 @@
       <ion-select-option value="block">Wood Block</ion-select-option>
     </ion-select>
   </ion-item>
+  <ion-button size="small" fill="outline" (click)="enableFawhnification()">Fawhnify</ion-button>
+  <ion-button size="small" fill="outline" (click)="enableLight()">Light</ion-button>
   <!-- <ion-row class="ion-justify-content-center"> -->
     <div class="timerDiv">
       <svg id="progress-circle" width="50em" height="50em" viewBox="0 0 200 200">
@@ -34,8 +36,6 @@
         <text x="50%" y="55%" class="timer-text">{{ time | async }}</text>
       </svg>
     </div>
-  <!-- </ion-row> -->
-  <!-- </ion-row>  -->
 </ion-content>
 <ion-footer>
 
