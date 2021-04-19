@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController, NavController } from '@ionic/angular';
+import { ActionSheetController, AlertController, ModalController, NavController } from '@ionic/angular';
 import {JournalService} from '../journal.service';
 import { JournalmodalPage } from '../modals/journalmodal/journalmodal.page';
 import { JournalEntry } from '../models/interface.journal';
+
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -10,7 +11,12 @@ import { JournalEntry } from '../models/interface.journal';
 })
 export class Tab3Page implements OnInit {
   journal: any;
-  constructor(public alertController: AlertController, private nav : NavController, private journalService: JournalService, public modalController: ModalController) {}
+  constructor(
+    public alertController: AlertController, 
+    private nav : NavController, 
+    private journalService: JournalService, 
+    public modalController: ModalController, 
+    public actionSheetController: ActionSheetController) {}
   async ngOnInit(){
     this.journal=this.journalService;
   }
@@ -20,9 +26,8 @@ export class Tab3Page implements OnInit {
       componentProps: {
         "tempEntry": temp
       }
-    });
-
-
+    }
+    );
     return await modal.present();
   }
 
