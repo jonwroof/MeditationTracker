@@ -74,6 +74,126 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  .fawhny-theme {
+    // --ion-color-primary: #fec5e7;
+    // --ion-color-primary-rgb: 254,197,231;
+    // --ion-color-primary-contrast: #000000;
+    // --ion-color-primary-contrast-rgb: 0,0,0;
+    // --ion-color-primary-shade: #e0adcb;
+    // --ion-color-primary-tint: #fecbe9;
+    // //--ion-item-ios-background-color: #ffffff;
+    // //--ion-background-color: rgb(255,119,176);
+    // //--ion-background-color: #ffffff;
+     --ion-background-color: #ffffff;
+      
+    // --ion-color-secondary: #ffff80;
+    // --ion-color-secondary-rgb: 255,255,128;
+    // --ion-color-secondary-contrast: #000000;
+    // --ion-color-secondary-contrast-rgb: 0,0,0;
+    // --ion-color-secondary-shade: #e0e071;
+    // --ion-color-secondary-tint: #ffff8d;
+      
+    // --ion-color-tertiary: #bbbbff;
+    // --ion-color-tertiary-rgb: 187,187,255;
+    // --ion-color-tertiary-contrast: #000000;
+    // --ion-color-tertiary-contrast-rgb: 0,0,0;
+    // --ion-color-tertiary-shade: #a5a5e0;
+    // --ion-color-tertiary-tint: #c2c2ff;
+
+    --ion-color-primary: #c1d7ff;
+    --ion-color-primary-rgb: 193,215,255;
+    --ion-color-primary-contrast: #000000;
+    --ion-color-primary-contrast-rgb: 0,0,0;
+    --ion-color-primary-shade: #aabde0;
+    --ion-color-primary-tint: #c7dbff;
+  
+    --ion-color-secondary: #bfebff;
+    --ion-color-secondary-rgb: 191,235,255;
+    --ion-color-secondary-contrast: #000000;
+    --ion-color-secondary-contrast-rgb: 0,0,0;
+    --ion-color-secondary-shade: #a8cfe0;
+    --ion-color-secondary-tint: #c5edff;
+  
+    --ion-color-tertiary: #caceff;
+    --ion-color-tertiary-rgb: 202,206,255;
+    --ion-color-tertiary-contrast: #000000;
+    --ion-color-tertiary-contrast-rgb: 0,0,0;
+    --ion-color-tertiary-shade: #b2b5e0;
+    --ion-color-tertiary-tint: #cfd3ff;
+      
+    --ion-color-success: #99fbb9;
+    --ion-color-success-rgb: 153,251,185;
+    --ion-color-success-contrast: #000000;
+    --ion-color-success-contrast-rgb: 0,0,0;
+    --ion-color-success-shade: #87dda3;
+    --ion-color-success-tint: #a3fbc0;
+
+    --ion-color-warning: #ffde79;
+    --ion-color-warning-rgb: 255,222,121;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0,0,0;
+    --ion-color-warning-shade: #e0c36a;
+    --ion-color-warning-tint: #ffe186;
+
+    --ion-color-danger: #f07786;
+    --ion-color-danger-rgb: 240,119,134;
+    --ion-color-danger-contrast: #000000;
+    --ion-color-danger-contrast-rgb: 0,0,0;
+    --ion-color-danger-shade: #d36976;
+    --ion-color-danger-tint: #f28592;
+      
+    --ion-color-dark: #222428;
+    --ion-color-dark-rgb: 34,36,40;
+    --ion-color-dark-contrast: #ffffff;
+    --ion-color-dark-contrast-rgb: 255,255,255;
+    --ion-color-dark-shade: #1e2023;
+    --ion-color-dark-tint: #383a3e;
+      
+    --ion-color-medium: #92949c;
+    --ion-color-medium-rgb: 146,148,156;
+    --ion-color-medium-contrast: #ffffff;
+    --ion-color-medium-contrast-rgb: 255,255,255;
+    --ion-color-medium-shade: #808289;
+    --ion-color-medium-tint: #9d9fa6;
+      
+    --ion-color-light: #f4f5f8;
+    --ion-color-light-rgb: 244,245,248;
+    --ion-color-light-contrast: #000000;
+    --ion-color-light-contrast-rgb: 0,0,0;
+    --ion-color-light-shade: #d7d8da;
+    --ion-color-light-tint: #f5f6f9;
+
+    .timer-text {
+      // transform: rotate(90deg);
+      // transform-origin: center;
+      font-size: 36px;
+      text-anchor: middle;
+      font-weight: 600;
+      fill:  #ffffff ;
+    }
+    .timerDiv{
+      margin:auto;
+      height:90%;
+      width:100%;
+      overflow:hidden;
+    }
+    #progress-circle{
+      margin:auto;
+      // margin-top: -2em;
+      display: block;
+      width: 100%;
+      height: 90%;
+      max-width: 720px;
+    }
+    .platform-android #progress-circle {
+      width: 100%;
+    }
+
+    ion-content {
+      --background: linear-gradient(90deg, rgba(255,119,176,1) 0%, rgba(255,182,212,1) 100%);; 
+    }
+}
 }
 
 @media (prefers-color-scheme: dark) {

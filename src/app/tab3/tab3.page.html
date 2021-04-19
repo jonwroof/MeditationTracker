@@ -13,7 +13,13 @@
       <ion-title size="large">Journal Entries</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-list>
+  <!-- fab placed to the top end -->
+    <ion-fab vertical="center" horizontal="end" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  <ion-list lines="none">
     <ion-item-sliding *ngFor="let temp of journal.myJournal" >
       <ion-item (click)="openModal(temp)">
         <ion-label position="floating">{{temp.entrydate | date : 'medium' }}</ion-label><br>

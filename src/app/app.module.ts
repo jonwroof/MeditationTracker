@@ -14,10 +14,16 @@ import { JournalService } from './journal.service';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot({
+  imports: [BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    IonicStorageModule.forRoot({
     driverOrder: [Drivers.IndexedDB, Drivers.LocalStorage]
   })],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}, JournalService],
+  providers: [
+    { provide: RouteReuseStrategy, 
+      useClass: IonicRouteStrategy}, 
+      JournalService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
