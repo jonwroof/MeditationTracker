@@ -12,23 +12,21 @@
       <ion-title size="large">Session Timer</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-item>
+  <ion-item lines="none">
     <ion-label>Alarm Sound</ion-label>
-    <ion-select value="gong" id="alarmsound" [(ngModel)]="sound">
+    <ion-select value="gong" id="alarmsound" [(ngModel)]="sound" animated="true">
       <ion-select-option value="gong">Gong</ion-select-option>
       <ion-select-option value="bowl">Singing Bowl</ion-select-option>
       <ion-select-option value="block">Wood Block</ion-select-option>
     </ion-select>
   </ion-item>
-  <ion-button size="small" fill="outline" (click)="enableFawhnification()">Fawhnify</ion-button>
-  <ion-button size="small" fill="outline" (click)="enableLight()">Light</ion-button>
   <!-- <ion-row class="ion-justify-content-center"> -->
     <div class="timerDiv">
       <svg id="progress-circle" width="50em" height="50em" viewBox="0 0 200 200">
         <linearGradient id="linearColors1" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#aeb6bf"></stop>
-          <stop offset="100%" stop-color="#2e4053"></stop>
-        </linearGradient>-->
+          <stop id="gradient1" offset="0%" stop-color="#aeb6bf"></stop>
+          <stop id="gradient2" offset="100%" stop-color="#2e4053"></stop>
+        </linearGradient>
         <circle cx="50%" cy="50%" [attr.r]="circleR" fill="none" stroke="#f3f3f3" stroke-width="12" transform="rotate(-90 100 100)"/>
         <circle cx="50%" cy="50%" [attr.r]="circleR" fill="none" stroke="url(#linearColors1)" stroke-width="12" transform="rotate(-90 100 100)"
           stroke-linecap="round" [attr.stroke-dasharray]="circleDasharray"
@@ -37,14 +35,14 @@
       </svg>
     </div>
 </ion-content>
-<ion-footer>
+<ion-item lines="none">
+  <ion-label color="tertiary" position="floating">Session Length?</ion-label>
+  <ion-input type="number" [(ngModel)]="minuteinput" [min]="0" placeholder="10 minutes"></ion-input>
+</ion-item>
 
-  <ion-item>
-    <ion-label position="floating">How Many Minutes?</ion-label>
-    <ion-input type="number" [(ngModel)]="minuteinput" [min]="0" placeholder="10"></ion-input>
-  </ion-item>
-  <ion-button *ngIf="state === 'stop'" expand="block" style="--background:  #229954" (click)="startTimer(minuteinput)">
+<ion-footer>
+  <ion-button *ngIf="state === 'stop'" fill="outline" expand="block" (click)="startTimer(minuteinput)">
     Start Timer</ion-button>
-  <ion-button *ngIf="state === 'start'" expand="block" style="--background:  #a93226 " (click)="stopTimer()">
+  <ion-button *ngIf="state === 'start'" fill="outline" expand="block" (click)="stopTimer()">
     Stop Timer</ion-button>
 </ion-footer>
