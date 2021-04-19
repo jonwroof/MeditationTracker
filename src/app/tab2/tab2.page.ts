@@ -4,7 +4,7 @@ import { AlertController, NavController } from '@ionic/angular';
 import { JournalService } from '../journal.service';
 import { ModalController } from '@ionic/angular';
 import { JournalmodalPage } from '../modals/journalmodal/journalmodal.page';
-import { ThemeSwitcherService } from '../theme-switcher.service';
+
 const circleR = 80;
 const circleDasharray = 2 * Math.PI * circleR;
 
@@ -36,8 +36,7 @@ export class Tab2Page implements OnInit {
     public alertController: AlertController, 
     private nav: NavController, 
     private journalService: JournalService, 
-    public modalController: ModalController,
-    private theme: ThemeSwitcherService) {
+    public modalController: ModalController) {
   }
   async ngOnInit(){
     this.journal = this.journalService;
@@ -156,15 +155,6 @@ export class Tab2Page implements OnInit {
   percentageOffset(percent) {
     const percentFloat = percent / 100;
     return circleDasharray * (1 - percentFloat);
-  }
-
-  enableFawhnification(){
-    this.theme.enableFawhnification();
-
-  }
-  
-  enableLight() {
-    this.theme.enableLight();
   }
 
 }
