@@ -76,30 +76,9 @@
   --ion-color-light-tint: #f5f6f9;
 
   .fawhny-theme {
-    // --ion-color-primary: #fec5e7;
-    // --ion-color-primary-rgb: 254,197,231;
-    // --ion-color-primary-contrast: #000000;
-    // --ion-color-primary-contrast-rgb: 0,0,0;
-    // --ion-color-primary-shade: #e0adcb;
-    // --ion-color-primary-tint: #fecbe9;
-    // //--ion-item-ios-background-color: #ffffff;
-    // //--ion-background-color: rgb(255,119,176);
-    // //--ion-background-color: #ffffff;
-     --ion-background-color: #ffffff;
-      
-    // --ion-color-secondary: #ffff80;
-    // --ion-color-secondary-rgb: 255,255,128;
-    // --ion-color-secondary-contrast: #000000;
-    // --ion-color-secondary-contrast-rgb: 0,0,0;
-    // --ion-color-secondary-shade: #e0e071;
-    // --ion-color-secondary-tint: #ffff8d;
-      
-    // --ion-color-tertiary: #bbbbff;
-    // --ion-color-tertiary-rgb: 187,187,255;
-    // --ion-color-tertiary-contrast: #000000;
-    // --ion-color-tertiary-contrast-rgb: 0,0,0;
-    // --ion-color-tertiary-shade: #a5a5e0;
-    // --ion-color-tertiary-tint: #c2c2ff;
+
+    // --ion-background-color: #ffffff;
+     --ion-background-color: #ff73a9;
 
     --ion-color-primary: #c1d7ff;
     --ion-color-primary-rgb: 193,215,255;
@@ -170,7 +149,7 @@
       font-size: 36px;
       text-anchor: middle;
       font-weight: 600;
-      fill:  #ffffff ;
+      fill: peachpuff ;
     }
     .timerDiv{
       margin:auto;
@@ -191,7 +170,9 @@
     }
 
     ion-content {
-      --background: linear-gradient(90deg, rgba(255,119,176,1) 0%, rgba(255,182,212,1) 100%);; 
+    //  --background: linear-gradient(90deg, rgba(255,119,176,1) 0%, rgba(255,182,212,1) 100%);; 
+    //  --background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+      --background: linear-gradient(90deg, rgba(253,255,170,1) 0%, rgba(255,127,171,1) 100%);
     }
 }
 }
