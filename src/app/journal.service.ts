@@ -37,6 +37,7 @@ export class JournalService implements OnInit {
       this.storage.create();
       const result = await this.storage.get('journal');
       if (result != null) {
+        console.log("successfully retrieved");
         this.myJournal = JSON.parse(result);
       }else{
         this.myJournal = [];

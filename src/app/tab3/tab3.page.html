@@ -13,6 +13,7 @@
       <ion-title size="large">Journal Entries</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-searchbar [(ngModel)]="filterTerm" (ionChange)="filter()" value=""></ion-searchbar>
   <!-- fab placed to the middle end -->
     <ion-fab vertical="center" horizontal="end" slot="fixed">
       <ion-fab-button (click)="openModal()">
@@ -20,7 +21,7 @@
       </ion-fab-button>
     </ion-fab>
   <ion-list lines="none">
-    <ion-item-sliding *ngFor="let temp of journal.myJournal" >
+    <ion-item-sliding *ngFor="let temp of filterJournal" >
       <ion-item (click)="openModal(temp)">
         <ion-label position="floating">{{temp.entrydate | date : 'medium' }}</ion-label><br>
         <p class="tags">Tags: {{temp.tags.join(', ')}}</p>

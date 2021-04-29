@@ -23,18 +23,27 @@ export class JournalmodalPage implements OnInit {
     private journalService: JournalService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.journal = this.journalService;
-    this.journal.getJournal();
-    if (this.journalService.myJournal.lastIndexOf(this.tempEntry) != -1) {
+    await this.journal.getJournal();
+    let indextemp = 0;
+    let found = false;
+    for (let temp of this.journal.myJournal) {
+      if (temp.entrydate == this.tempEntry.entrydate) {
+        found = true;
+        break;
+      }
+      indextemp++;
+    }
+    if (found) {
       this.journalinput = this.tempEntry.entrybody;
       this.tagtext = this.tempEntry.tags.join(', ');
-      this.index = this.journalService.myJournal.lastIndexOf(this.tempEntry);
-    }else{
-      this.index=this.journalService.nextIndex;
-      this.tempEntry={entrydate: new Date, entrybody: null, tags: [], sessionlength: this.journalService.sessionlength }
-      this.tagtext='';
-      this.journalinput='';
+      this.index = indextemp;
+    } else {
+      this.index = this.journalService.nextIndex;
+      this.tempEntry = { entrydate: new Date, entrybody: null, tags: [], sessionlength: this.journalService.sessionlength }
+      this.tagtext = '';
+      this.journalinput = '';
     }
   }
 
