@@ -37,6 +37,7 @@ export class JournalService implements OnInit {
       this.storage.create();
       const result = await this.storage.get('journal');
       if (result != null) {
+        console.log("successfully retrieved");
         this.myJournal = JSON.parse(result);
       }else{
         this.myJournal = [];
@@ -62,6 +63,7 @@ export class JournalService implements OnInit {
     if (ID == null) {
       this.myEntry = { "entrydate": new Date, "entrybody": this.entrytext, "tags": this.tagtext.split(", "), "sessionlength": this.sessionlength };
       this.myJournal.push(this.myEntry);
+      this.nextIndex=this.myJournal.length;
     }
     else { this.myJournal[ID] = tempEntry; }
     this.storage.set('journal', JSON.stringify(this.myJournal));
