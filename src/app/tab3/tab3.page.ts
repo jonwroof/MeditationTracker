@@ -13,12 +13,13 @@ export class Tab3Page implements OnInit {
   journal: any;
   filterJournal = [];
   filterTerm: string;
+  emptyEntry: JournalEntry;
   constructor(
     public alertController: AlertController,
     private nav: NavController,
     private journalService: JournalService,
     public modalController: ModalController,
-    public actionSheetController: ActionSheetController) { this.filterTerm = ""; }
+    public actionSheetController: ActionSheetController) { this.filterTerm = ""; this.emptyEntry = { "entrydate": new Date, "entrybody": "", "tags": [], "sessionlength": 0 } }
   async ngOnInit() {
     this.journal = this.journalService;
     await this.journal.getJournal();
@@ -26,9 +27,11 @@ export class Tab3Page implements OnInit {
     console.log(this.journal.myJournal);
   }
   async ionViewDidEnter() {
+    console.log("view entered");
     await this.filter();
   }
   async filter() {
+    await this.journal.getJournal();
     if (this.filterTerm == "" || this.filterTerm == null) {
       this.filterJournal = [...this.journal.myJournal];
     } else {
@@ -40,29 +43,27 @@ export class Tab3Page implements OnInit {
       }
     }
   }
-  async openModal(temp: JournalEntry) {
+  async openModal(temp?: JournalEntry) {
     await this.journal.getJournal();
-    let index = this.journal.myJournal.lastIndexOf(temp);
-    if (index != -1) {
-      const modal = await this.modalController.create({
-        component: JournalmodalPage,
-        componentProps: {
-          "tempEntry": this.journal.myJournal[index]
-        }
+    if (this.emptyEntry == temp) { temp.entrydate = new Date; }
+    const modal = await this.modalController.create({
+      component: JournalmodalPage,
+      componentProps: {
+        "tempEntry": temp
       }
-      );
-      return await modal.present();
-    } else {
-      const modal = await this.modalController.create({
-        component: JournalmodalPage,
-        componentProps: {
-          "tempEntry": temp
-        }
-      }
-      );
-      return await modal.present();
     }
+    );
+    await modal.present();
+
+
+    const { data } = await modal.onDidDismiss();
+    if(data){
+      this.filter();
+    }
+
 
   }
 
 }
+
+

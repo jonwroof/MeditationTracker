@@ -16,7 +16,7 @@
   <ion-searchbar [(ngModel)]="filterTerm" (ionChange)="filter()" value=""></ion-searchbar>
   <!-- fab placed to the middle end -->
     <ion-fab vertical="center" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="openModal()">
+      <ion-fab-button (click)="openModal(emptyEntry)">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
@@ -27,7 +27,7 @@
         <p class="tags">Tags: {{temp.tags.join(', ')}}</p>
       </ion-item>
       <ion-item-options side="end">
-        <ion-item-option color="danger" expandable (click)="journal.removeEntry(temp)">
+        <ion-item-option color="danger" expandable (click)="journal.removeEntry(temp); filter()">
           <ion-icon name="trash" style="font-size: 42px;"></ion-icon>
         </ion-item-option>
       </ion-item-options>

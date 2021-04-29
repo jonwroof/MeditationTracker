@@ -41,7 +41,7 @@ export class JournalmodalPage implements OnInit {
       this.index = indextemp;
     } else {
       this.index = this.journalService.nextIndex;
-      this.tempEntry = { entrydate: new Date, entrybody: null, tags: [], sessionlength: this.journalService.sessionlength }
+      this.tempEntry = { entrydate: new Date, entrybody: "", tags: [], sessionlength: this.journalService.sessionlength }
       this.tagtext = '';
       this.journalinput = '';
     }

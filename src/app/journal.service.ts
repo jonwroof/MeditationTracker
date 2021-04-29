@@ -63,6 +63,7 @@ export class JournalService implements OnInit {
     if (ID == null) {
       this.myEntry = { "entrydate": new Date, "entrybody": this.entrytext, "tags": this.tagtext.split(", "), "sessionlength": this.sessionlength };
       this.myJournal.push(this.myEntry);
+      this.nextIndex=this.myJournal.length;
     }
     else { this.myJournal[ID] = tempEntry; }
     this.storage.set('journal', JSON.stringify(this.myJournal));
